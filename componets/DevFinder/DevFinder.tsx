@@ -5,7 +5,7 @@ import DevFinderSearch from "../DevFinderSearch/DevFinderSearch";
 import DevFinderUserCard from "../DevFinderUserCard/DevFinderUserCard";
 import styles from './DevFinder.module.css'
 import { Box } from "@mantine/core"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { GitHubUser } from '@/types/interface';
 import { fetchGitHubUserData } from "@/app/api/fetch-user/route";
 
@@ -25,22 +25,17 @@ const DevFinder = () => {
     } catch (error: any) {
       setError(error.message);
     } finally {
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
     }
   };
-
-  useEffect(() => {
-    if (username) {
-      fetchUser();
-    }
-  }, [username]);
-
 
   return (
     <Box className={styles.devFinderContainer}>
       <DevFinderHead />
-      <DevFinderSearch username={username} setUsername={setUsername} fetchUser={fetchUser} />
-      <DevFinderUserCard data={data} />
+      <DevFinderSearch username={username} setUsername={setUsername} fetchUser={fetchUser} setLoading={setLoading} />
+      <DevFinderUserCard data={data} loading={loading} />
     </Box>
   )
 }

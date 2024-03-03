@@ -15,4 +15,5 @@ export interface GitHubUser {
 
 export interface DevFinderUserCardProps {
   data: GitHubUser | null;
+  loading: boolean;
 }

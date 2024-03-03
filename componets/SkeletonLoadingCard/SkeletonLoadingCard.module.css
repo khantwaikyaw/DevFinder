@@ -1,0 +1,111 @@
+.skeletonCard {
+  min-width: rem(328px);
+  height: rem(516px);
+  background-color: light-dark(#FEFEFE, #1E2A47);
+  box-shadow: 0 rem(16px) rem(30px) rem(-10px) rgba(70, 96, 187, 0.2);
+  border-radius: rem(15px);
+  padding: rem(32px) rem(24px) rem(48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .circleSkeleton {
+    --skeleton-height: rem(70px);
+    --skeleton-width: rem(70px);
+    --skeleton-border-radius: rem(50%);
+    margin-bottom: rem(20px);
+  }
+
+  .lineSkeleton {
+    --skeleton-height: rem(10px);
+  }
+
+  .paragraphSkeleton {
+    display: flex;
+    flex-direction: column;
+    gap: rem(6px);
+
+    .lineSkeleton:nth-of-type(1) {
+      --skeleton-width: rem(30%);
+    }
+    
+    .lineSkeleton:nth-of-type(2) {
+      --skeleton-width: rem(98%);
+    }
+    
+    .lineSkeleton:nth-of-type(3) {
+      --skeleton-width: rem(90%);
+    }
+    
+    .lineSkeleton:nth-of-type(4) {
+      --skeleton-width: rem(99%);
+    }
+  }
+
+  .boxSkeleton {
+    --skeleton-height: rem(126px);
+    --skeleton-width: rem(100%);
+  }
+
+  .listSkeleton {
+    display: flex;
+    flex-direction: column;
+    gap: rem(6px);
+    width: rem(30%);   
+  }
+}
+
+@media (min-width: $mantine-breakpoint-sm) {
+  .skeletonCard {
+    min-width: rem(574px);
+    height: rem(480px);
+    padding: rem(40px);
+
+    .circleSkeleton {
+      --skeleton-height: rem(118px);
+      --skeleton-width: rem(118px);
+      --skeleton-border-radius: 50%;
+      margin-bottom: rem(24px);
+    }
+
+    .boxSkeleton {
+      --skeleton-height: rem(100px);
+    }
+  }
+}
+
+@media (min-width: $mantine-breakpoint-md) {
+  .skeletonCard {
+    min-width: rem(730px);
+    height: rem(444px);
+    padding: rem(48px);
+    padding-left: rem(280px);
+    position: relative;
+    justify-content: space-around;
+
+    .circleSkeleton {
+      --skeleton-height: rem(118px);
+      --skeleton-width: rem(118px);
+      --skeleton-border-radius: 50%;
+      margin-bottom: rem(12px);
+      position: absolute;
+      top: rem(42px);
+      left: rem(80px);
+    }
+
+    .paragraphSkeleton {
+      gap: rem(12px);
+    }
+
+    .listSkeleton {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: rem(20px);
+      width: rem(100%);
+
+      .lineSkeleton {
+        --skeleton-width: rem(40%);
+      }
+    }
+  }
+}
