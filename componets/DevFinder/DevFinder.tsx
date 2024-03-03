@@ -8,35 +8,49 @@ import { Box } from "@mantine/core"
 import { useState } from "react";
 import { GitHubUser } from '@/types/interface';
 import { fetchGitHubUserData } from "@/app/api/fetch-user/route";
+import NotificationCard from "../NotificationCard/NotificationCard";
 
 const DevFinder = () => {
   const [username, setUsername] = useState<string | null>(null);
   const [data, setData] = useState<GitHubUser | null>(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [notification, setNotification] = useState<{ message: string; type: 'error' | 'success' } | null>(null);
 
   const fetchUser = async () => {
     if (!username) return;
     setLoading(true);
-    setError(null);
+    setNotification(null);
     try {
       const userData = await fetchGitHubUserData(username);
       setData(userData);
+      setNotification({ message: "User found!", type: 'success' }); 
     } catch (error: any) {
-      setError(error.message);
+      setNotification({ message: error.message, type: 'error' });
     } finally {
+      // using timeout to test & show loading card
       setTimeout(() => {
         setLoading(false);
-      }, 2000);
+        setNotification(null);
+      }, 1000);
     }
   };
 
   return (
-    <Box className={styles.devFinderContainer}>
-      <DevFinderHead />
-      <DevFinderSearch username={username} setUsername={setUsername} fetchUser={fetchUser} setLoading={setLoading} />
-      <DevFinderUserCard data={data} loading={loading} />
-    </Box>
+    <>
+      <Box className={styles.notificationContainer}>
+        {notification && 
+          <NotificationCard 
+            error={notification.type === 'error' ? notification : undefined} 
+            success={notification.type === 'success' ? notification : undefined} 
+        />}
+      </Box>
+
+      <Box className={styles.devFinderContainer}>
+        <DevFinderHead />
+        <DevFinderSearch username={username} setUsername={setUsername} fetchUser={fetchUser} setLoading={setLoading} />
+        <DevFinderUserCard data={data} loading={loading} />
+      </Box>
+    </>
   )
 }
 

@@ -17,3 +17,15 @@ export interface DevFinderUserCardProps {
   data: GitHubUser | null;
   loading: boolean;
 }
+
+export interface DevFinderCardDetailItemProps {
+  title: string;
+  value: number | null;
+}
+
+export interface DevFinderCardLocationDevFinderCardDetailItemProps {
+  iconSrc: string;
+  altText: string;
+  value: string | null;
+  isLink?: boolean;
+}

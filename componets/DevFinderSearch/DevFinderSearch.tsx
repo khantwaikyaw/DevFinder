@@ -1,4 +1,4 @@
-import { Flex, TextInput, Button, Image } from '@mantine/core';
+import { TextInput, Button, Image } from '@mantine/core';
 import styles from './DevFinderSearch.module.css';
 
 interface DevFinderSearchProps {

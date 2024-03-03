@@ -1,0 +1,10 @@
+.notificationCard {
+  background-color: light-dark(#FEFEFE, #1E2A47);
+  box-shadow: 0 rem(16px) rem(30px) rem(-10px) rgba(70, 96, 187, 0.2);
+  border-radius: rem(15px);
+}
+
+.notificationIcon {
+  height: rem(20px);
+  width: rem(20px); 
+}

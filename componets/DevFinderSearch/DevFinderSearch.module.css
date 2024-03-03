@@ -41,7 +41,6 @@
 
       .input::placeholder {
         font-size: rem(18px);
-        padding-left: 24px;
       }
 
       .textInputButton {
