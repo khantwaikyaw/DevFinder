@@ -1,0 +1,52 @@
+.dark {
+  @mixin dark {
+    display: none;
+  }
+
+  @mixin light {
+    display: block;
+  }
+}
+
+.light {
+  @mixin light {
+    display: none;
+  }
+
+  @mixin dark {
+    display: block;
+  }
+}
+
+.devFinderHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: rem(36px);
+  
+  .headModeContainer {
+    display: flex;
+    align-items: center;
+    gap: rem(16px);
+  }
+  
+  .headTitile {
+    font-size: rem(26px);
+    color: light-dark(#222731, #FFF);
+  }
+  
+  .headModeName {
+    font-size: rem(13px);
+    font-weight: bold;
+  }
+
+  .icon:hover {
+    cursor: pointer;
+  }
+}
+
+@media (min-width: $mantine-breakpoint-sm) {
+  .devFinderHead {
+    margin-bottom: rem(36px);
+  }
+}

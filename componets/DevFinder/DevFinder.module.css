@@ -1,0 +1,15 @@
+.devFinderContainer {
+  max-width: rem(328px);
+}
+
+@media (min-width: $mantine-breakpoint-sm) {
+  .devFinderContainer {
+    max-width: rem(574px);
+  }
+}
+
+@media (min-width: $mantine-breakpoint-md) {
+  .devFinderContainer {
+    max-width: rem(730px);
+  }
+}

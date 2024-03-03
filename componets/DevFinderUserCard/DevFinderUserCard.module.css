@@ -1,0 +1,204 @@
+.gitUserCard {
+  background-color: light-dark(#FEFEFE, #1E2A47);
+  box-shadow: 0 rem(16px) rem(30px) rem(-10px) rgba(70, 96, 187, 0.2);
+  border-radius: rem(15px);
+  padding: rem(32px) rem(24px) rem(48px);
+
+  .hiddenGitUserAvatarColumn {
+    display: none;
+  }
+
+  .gitUserCardHead {
+    display: flex;
+    gap: rem(20px);
+    margin-bottom: rem(36px);
+  }
+
+  .gitUserCardAvatar {
+    height: rem(70px);
+    width: rem(70px);
+    border-radius: 50%;
+  }
+  
+  .gitUserName {
+    font-size: rem(16px);
+    color: light-dark(#2B3442, #FFF);
+  }
+  
+  .gitUserHandle {
+    font-size: rem(13px);
+    color: #0079FF;
+    margin-bottom: rem(6px);
+  }
+  
+  .gitDateJoined {
+    font-size: rem(13px);
+    color: ligh-dark(#697C9A, #FFF);
+  }
+  
+  .gitUserDescription {
+    font-size: rem(13px);
+    color: light-dark(#4B6A9B, #FFF);
+    line-height: rem(25px);
+    margin-bottom: rem(24px);
+  }
+  
+  .gitUserDetailsContainer {
+    display: flex;
+    gap: rem(1px);
+    background-color: light-dark(#F6F8FF, #141D2F);
+    padding: rem(18px) rem(15px);
+    text-align: center;
+    border-radius: rem(10px);
+    margin-bottom: rem(24px);
+  }
+  
+  .gitUserDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+  }
+  
+  .gitUserDetailsTitle {
+    font-size: rem(13px);
+    color: light-dark(#4B6A9B, #FFF);
+    margin-bottom: rem(8px);
+  }
+  
+  .gitUserDetailsValue {
+    font-size: rem(16px);
+    color: light-dark(#2B3442, #FFF);
+    font-weight: bold;
+  }
+  
+  .gitUserLocationDetailsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: rem(16px);
+  }
+  
+  .gitUserLocationDetails {
+    display: flex;
+    gap: rem(20px);
+  }
+  
+  .gitUserLocationDetailsValue {
+    font-size: rem(13px);
+    color: light-dark(#4B6A9B, #FFF);
+    margin-left: rem(8px);
+  }
+
+  .icon {
+    height: rem(20px);
+  }
+  
+}
+
+@media (min-width: $mantine-breakpoint-sm) {
+  .gitUserCard {
+    padding: rem(40px);
+
+    .gitUserCardHead{
+      align-items: center;
+    }
+
+    .gitUserCardAvatar {
+      height: rem(118px);
+      width: rem(118px);
+    }
+
+    .gitUserCardHeadText {
+      display: flex;
+      flex-direction: column;
+      gap: rem(2px);
+    }
+
+    .gitUserName {
+      font-size: rem(26px);
+    }
+    
+    .gitUserHandle {
+      font-size: rem(16px);
+      margin-bottom: 0;
+    }
+    
+    .gitDateJoined {
+      font-size: rem(15px);
+    }
+    
+    .gitUserDescription {
+      font-size: rem(15px);
+      margin-bottom: rem(32px);
+    }
+
+    .gitUserDetailsContainer {
+      gap: rem(10px);
+      padding: rem(18px) rem(32px);
+      text-align: left;
+      margin-bottom: rem(30px);
+    }
+
+    .gitUserDetailsValue {
+      font-size: rem(22px);
+    }
+    
+    .gitUserLocationDetailsContainer {
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: rem(16px);
+    }
+    
+    .gitUserLocationDetails {
+      width: 48%;
+    }
+
+    .gitUserLocationDetailsValue {
+      font-size: rem(15px);
+    }
+  }
+}
+
+@media (min-width: $mantine-breakpoint-md) {
+  .gitUserCard {
+    padding: rem(48px);
+    display: flex;
+    gap: rem(38px);
+
+    .hiddenGitUserAvatarColumn {
+      display: flex;
+      width: rem(118px);
+      height: auto;
+      & .gitUserCardAvatarDesktop {
+        height: rem(118px);
+        width: rem(118px);
+        border-radius: 50%;
+      }
+    }
+
+    .gitUserCardHead{
+      align-items: center;
+    }
+
+    .gitUserCardAvatar {
+      display: none;
+    }
+
+    .gitUserCardHeadText {
+      display: flex;
+      flex-direction: column;
+      gap: rem(2px);
+      position: relative;
+      flex: 1;
+    }
+
+    .gitDateJoined {
+      font-size: rem(15px);
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+  }
+}
