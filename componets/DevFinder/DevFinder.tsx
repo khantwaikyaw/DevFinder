@@ -1,53 +1,46 @@
 'use client'
 
-import { Box } from "@mantine/core"
-import styles from './DevFinder.module.css'
-import { useState } from "react";
 import DevFinderHead from "../DevFinderHead/DevFinderHead";
 import DevFinderSearch from "../DevFinderSearch/DevFinderSearch";
 import DevFinderUserCard from "../DevFinderUserCard/DevFinderUserCard";
+import styles from './DevFinder.module.css'
+import { Box } from "@mantine/core"
+import { useEffect, useState } from "react";
 import { GitHubUser } from '@/types/interface';
+import { fetchGitHubUserData } from "@/app/api/fetch-user/route";
 
 const DevFinder = () => {
   const [username, setUsername] = useState<string | null>(null);
   const [data, setData] = useState<GitHubUser | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
+
   const fetchUser = async () => {
+    if (!username) return;
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`https://api.github.com/users/${username}`);
-      if (!response.ok) throw new Error('Failed to fetch user data');
-      const data = await response.json();
-      console.log(data);
-      setData(data);
-    } catch (err) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError('An unexpected error occurred');
-      }
+      const userData = await fetchGitHubUserData(username);
+      setData(userData);
+    } catch (error: any) {
+      setError(error.message);
     } finally {
       setLoading(false);
     }
   };
 
-  const formatDate = (isoString: string): string => {
-    const date = new Date(isoString);
-    const day = date.getDate();
-    const month = date.toLocaleString('default', { month: 'short' });
-    const year = date.getFullYear();
-  
-    return `Joined ${month} ${day}, ${year}`;
-  };
+  useEffect(() => {
+    if (username) {
+      fetchUser();
+    }
+  }, [username]);
+
 
   return (
     <Box className={styles.devFinderContainer}>
       <DevFinderHead />
       <DevFinderSearch username={username} setUsername={setUsername} fetchUser={fetchUser} />
-      <DevFinderUserCard data={data} formatDate={formatDate} />
+      <DevFinderUserCard data={data} />
     </Box>
   )
 }

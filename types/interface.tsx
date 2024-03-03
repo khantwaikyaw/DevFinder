@@ -15,5 +15,4 @@ export interface GitHubUser {
 
 export interface DevFinderUserCardProps {
   data: GitHubUser | null;
-  formatDate: (isoString: string) => string;
 }
