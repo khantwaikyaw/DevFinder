@@ -7,7 +7,6 @@ import styles from './DevFinder.module.css'
 import { Box } from "@mantine/core"
 import { useState } from "react";
 import { GitHubUser } from '@/types/interface';
-import { fetchGitHubUserData } from "@/app/api/fetch-user/route";
 import NotificationCard from "../NotificationCard/NotificationCard";
 
 const DevFinder = () => {
@@ -21,19 +20,22 @@ const DevFinder = () => {
     setLoading(true);
     setNotification(null);
     try {
-      const userData = await fetchGitHubUserData(username);
+      const response = await fetch(`/api/fetch-user?username=${username}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch user data');
+      }
+      const userData: GitHubUser = await response.json();
       setData(userData);
-      setNotification({ message: "User found!", type: 'success' }); 
+      setNotification({ message: "User found!", type: 'success' });
     } catch (error: any) {
       setNotification({ message: error.message, type: 'error' });
     } finally {
-      // using timeout to test & show loading card
       setTimeout(() => {
         setLoading(false);
         setNotification(null);
       }, 1000);
     }
-  };
+  };  
 
   return (
     <>
